@@ -1,45 +1,8 @@
 <?php wp_footer(); ?>
 <br><br>
-<footer class="bg-dark text-center text-white">
+<footer class="text-center">
   <!-- Grid container -->
   <div class="container p-4">
-
-    <!-- Section: Form -->
-    <section class="">
-      <form action="">
-        <!--Grid row-->
-        <div class="row d-flex justify-content-center">
-          <!--Grid column-->
-          <div class="col-auto">
-            <p class="pt-2">
-              <strong>Sign up for our newsletter</strong>
-            </p>
-          </div>
-          <!--Grid column-->
-
-          <!--Grid column-->
-          <div class="col-md-5 col-12">
-            <!-- Email input -->
-            <div class="form-outline form-white mb-4">
-              <input type="email" id="form5Example2" class="form-control" />
-              <label class="form-label" for="form5Example2">Email address</label>
-            </div>
-          </div>
-          <!--Grid column-->
-
-          <!--Grid column-->
-          <div class="col-auto">
-            <!-- Submit button -->
-            <button type="submit" class="btn btn-outline-light mb-4">
-              Subscribe
-            </button>
-          </div>
-          <!--Grid column-->
-        </div>
-        <!--Grid row-->
-      </form>
-    </section>
-    <!-- Section: Form -->
 
     <!-- Section: Links -->
     <section class="">
@@ -48,7 +11,6 @@
         <!--Grid column-->
         <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
           <h5 class="text-uppercase">Features</h5>
-          <?php //$args = ['title_li', 'null']; ?>
 
           <?php wp_list_pages(); ?>
           <!-- NOTE: look further into this, see if there are better ways to organise and arrange it...,, -->
@@ -114,7 +76,7 @@
 
         <!--Grid column-->
         <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-          <h5 class="text-uppercase">Links</h5>
+          <h5 class="text-uppercase">Sponsors</h5>
 
           <ul class="list-unstyled mb-0">
             <li>

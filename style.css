@@ -20,10 +20,78 @@ Tags: cat foundation, new zealand, cats, non-profit organisation, charity
 
  /* NOTE FOR ME: add screenshot.png of the wbesite in later as a preeeeview */
 
+
+/* header set */
+/* ===================== */
+h1,
+h2,
+h3 {
+font-family: 'Lato', sans-serif;
+font-weight: bold;
+}
+
+h4,
+h5,
+h6,
+p,
+a {
+  font-family: 'Quattrocento Sans', sans-serif;
+}
+
+/* variable styles */
+/* ===================== */
+
+/* NOTE look up css variables l8r */
+
+:root {
+  /* colours */
+  --ncf-pink:  #e68dc2;
+  --ncf-blue: #77bce3;
+  --ncf-dark: #292323;
+  --ncf-light: #f9f4ef;
+}
+
+
 /* nav styles */
 /* ===================== */
 
 #logo {
   height: 80px;
-  margin-left: 50px;
+  margin-left: 10vw;
+}
+
+/* CTA item */
+.menu-item-18 a {
+  color: var(--ncf-light);
+  background: var(--ncf-pink);
+}
+
+.navbar-nav .nav-link {
+  margin-right: 30px;
+}
+
+.navbar-collapse {
+  margin-left: 45%;
+}
+
+/* front-page.php */
+/* ====================================================== */
+
+/* hero section */
+/* ===================== */
+
+.hero-img {
+  background-image: url(img/catfound.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 90vh;
+}
+
+.title {
+  position: relative;
+  top: 50%;
+  left: 20%;
+  color: var(--ncf-light);
+  font-size: 5em;
 }
