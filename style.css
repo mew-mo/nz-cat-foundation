@@ -25,6 +25,8 @@ Tags: cat foundation, new zealand, cats, non-profit organisation, charity
 body {
   padding: 0;
   margin: 0;
+  width: 100%;
+  overflow-x: hidden;
   background: var(--ncf-light);
 }
 
@@ -33,9 +35,9 @@ body {
 }
 
 .ncf-btn {
-  background: var(--ncf-pink);
+  background: var(--ncf-ps-blue);
   font-size: 1.5em;
-  color: var(--ncf-light);
+  color: var(--ncf-dark);
 }
 
 /* header set */
@@ -44,7 +46,7 @@ h1,
 h2,
 h3 {
 font-family: 'Lato', sans-serif;
-font-weight: bold;
+font-weight: normal;
 }
 
 h4,
@@ -55,6 +57,14 @@ a {
   font-family: 'Quattrocento Sans', sans-serif;
 }
 
+h2 {
+  font-size: 2rem;
+}
+
+p {
+  font-size: 1.5rem;
+}
+
 /* variable styles */
 /* ===================== */
 
@@ -62,10 +72,14 @@ a {
 
 :root {
   /* colours */
-  --ncf-pink:  #e68dc2;
-  --ncf-blue: #77bce3;
+  --ncf-pink:  #ED1971;
+  --ncf-blue: #38C4F0;
+  --ncf-ps-pink: #e6bdd8;
+  --ncf-ps-blue: #8AE3FF;
   --ncf-dark: #292323;
   --ncf-light: #f9f4ef;
+  /* section margins */
+  --new-section: 100px;
 }
 
 
@@ -77,18 +91,23 @@ a {
   margin-left: 10vw;
 }
 
+.navbar-nav .nav-link {
+  color: var(--ncf-dark);
+}
+
 /* CTA item */
-.menu-item-18 a {
+.menu-item-18 .nav-link {
   color: var(--ncf-light);
   background: var(--ncf-pink);
 }
 
-.navbar-nav .nav-link {
-  margin-right: 30px;
+.navbar-collapse {
+  position: absolute;
+  right: 70px;
 }
 
-.navbar-collapse {
-  margin-left: 45%;
+.nav-link {
+  margin-right: 50px;
 }
 
 /* front-page.php */
@@ -106,9 +125,12 @@ a {
 }
 
 .caption {
+  position: relative;
   width: 100vw;
   padding-top: 50vh;
-  text-align: center;
+  text-align: left;
+  left: 20%;
+  z-index: 999;
 }
 
 .title {
@@ -117,6 +139,64 @@ a {
   font-size: 5em;
 }
 
-.hero-paws-div, .subtitle {
-  display: inline;
+.subtitle {
+  color: var(--ncf-light);
+}
+
+.big-paws {
+  position: absolute;
+  height: 75%;
+  z-index: 0;
+  top: 70vh;
+  right: -20px;
+}
+
+/* you make a difference sec */
+/* ===================== */
+
+.intro-txt {
+  margin-top: var(--new-section);
+}
+
+.content-wrapper {
+  position: relative;
+  width: 100%;
+  background: var(--ncf-light);
+  z-index: 1;
+  opacity: 87%;
+}
+
+.intro-txt h2 {
+  text-align: center;
+  color: var(--ncf-pink);
+}
+
+.intro-txt p {
+  margin-top: 30px;
+}
+
+/* hotlinks sec */
+/* ===================== */
+
+.intro-hotlinks {
+  margin-top: var(--new-section);
+}
+
+.hotlink-img-wrapper {
+  display: block;
+  position: relative;
+  height: 250px;
+  width: 250px;
+  overflow: hidden;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.hotlink-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
