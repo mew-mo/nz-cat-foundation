@@ -1,8 +1,13 @@
 <?php get_header(); ?>
 
 <div class="hero-img">
-  <h1 class="title">New Zealand Cat Foundation</h1>
-  <h2 class="subtitle">Helping the Helpless</h2>
+  <div class="caption">
+    <h1 class="title">New Zealand Cat Foundation</h1>
+    <img src="<?php bloginfo('stylesheet_directory');?>/img/paws.svg" alt="pawprint divider" class="paws-div hero-paws-div">
+    <h2 class="subtitle">Helping the Helpless</h2>
+    <a href="<?php echo get_page_link(get_page_by_path('help-us'));?>" style="color:white;"> <br>
+    <button type="button" class="btn ncf-btn">Help Them</button></a>
+  </div>
 </div>
 <!-- hero ends -->
 

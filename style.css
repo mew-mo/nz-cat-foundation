@@ -20,6 +20,23 @@ Tags: cat foundation, new zealand, cats, non-profit organisation, charity
 
  /* NOTE FOR ME: add screenshot.png of the wbesite in later as a preeeeview */
 
+ /* universal elements */
+ /* ===================== */
+body {
+  padding: 0;
+  margin: 0;
+  background: var(--ncf-light);
+}
+
+.paws-div {
+  height: 80px;
+}
+
+.ncf-btn {
+  background: var(--ncf-pink);
+  font-size: 1.5em;
+  color: var(--ncf-light);
+}
 
 /* header set */
 /* ===================== */
@@ -88,10 +105,18 @@ a {
   height: 90vh;
 }
 
+.caption {
+  width: 100vw;
+  padding-top: 50vh;
+  text-align: center;
+}
+
 .title {
-  position: relative;
-  top: 50%;
-  left: 20%;
+  margin: 0 auto;
   color: var(--ncf-light);
   font-size: 5em;
+}
+
+.hero-paws-div, .subtitle {
+  display: inline;
 }
