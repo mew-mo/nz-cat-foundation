@@ -1,4 +1,4 @@
-console.log('hi');
+console.log('spageti');
 
 var menuItems = document.querySelector('#menu-main-menu').children;
 

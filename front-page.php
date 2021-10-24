@@ -11,15 +11,16 @@
 </div>
 <!-- hero ends -->
 
-
 <div class="content-wrapper">
   <!-- container starts -->
   <div class="container">
     <!-- you make a difference section -->
     <div class="fp-intro row">
 
-      <div class="intro-txt row">
+      <div class="intro-txt row justify-content-center">
+        <div class="line"></div>
         <h2>You make a difference</h2>
+        <div class="line"></div>
         <p>
           There are so many abandoned and unwanted cats and kittens in our Auckland communities. Our aim is to de-sex, vaccinate, and microchip every stray cat in the hope that one day each of them will have a loving home.
           <br><br>
@@ -41,7 +42,7 @@
       // checks what the posts are. make sure they MATCH
       ?>
 
-      <div class="intro-hotlinks row">
+      <div class="intro-hotlinks row" style="height:300px;">
 
         <?php
         if ( have_posts() ) :
@@ -51,13 +52,19 @@
           <div class="hotlink-img-wrapper">
               <?php the_post_thumbnail('small', ['class' => 'hotlink-img']);?>
           </div>
-          <h4><?php the_title();?></h4>
+          <svg viewBox="0 0 500 500" class="curve-wrap">
+              <path id="curve" d="M 50 250 A 80 50 0 1 1 300 350"/>
+              <text width="500" class="hotlink-txt">
+                <textPath xlink:href="#curve">
+                  <?php the_title();?>
+                </textPath>
+              </text>
+          </svg>
         </div>
         <?php endwhile;
         else : echo '<p> Shortcuts have not been created. </p>';
         endif
         ?>
-
       </div>
       <!-- intro hotlinks ends -->
 

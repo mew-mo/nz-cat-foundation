@@ -32,11 +32,11 @@
 		for (var i = 0; i < menuItems.length; i++) {
 			menuItems[i].classList.add('nav-item');
 			menuItems[i].children[0].classList.add('nav-link');
+			if (menuItems[i].children[0].innerHTML != 'Help Us') {
+				menuItems[i].children[0].innerHTML += '<img src="<?php bloginfo('stylesheet_directory');?>/img/single-paw.svg" alt="pawprint" class="nav-paw">';
+			}
 		}
 
-		// if (document.querySelector('.nav-item').innerHTML = 'Help Us') {
-		// 	this.classList.add('ncf-btn');
-		// }
 	</script>
 
  	<!-- starting the body -->

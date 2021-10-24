@@ -35,27 +35,41 @@ if ( have_posts() ) : $postcount = 0;
 
     if ($postcount == 1) {
     ?>
-  <div class="col-4">
+  <div class="col-4 mt-5" style="height:300px;">
     <a href="<?php the_permalink();?>">
       <div class="hotlink-img-wrapper">
         <?php the_post_thumbnail('medium_large', ['class' => 'hotlink-img']); ?>
       </div>
-        <h5><?php the_title(); ?></h5>
-      </a>
-    </div>
+      <svg viewBox="0 0 500 500" class="curve-wrap">
+          <path id="curve" d="M 50 250 A 80 50 0 1 1 300 350"/>
+          <text width="500" class="hotlink-txt">
+            <textPath xlink:href="#curve">
+              <?php the_title();?>
+            </textPath>
+          </text>
+      </svg>
+    </a>
+  </div>
   <?php
 }  //closing bracket for the if statement that is at the beginning of this codeblock. IT IS IMPORTNANT
   else {
     ?>
     <!-- else-> all of the normal posts show! -->
-    <div class="col-4">
+    <div class="col-4 mt-5" style="height:300px;">
       <a href="<?php the_permalink();?>">
         <div class="hotlink-img-wrapper">
           <?php the_post_thumbnail('medium_large', ['class' => 'hotlink-img']); ?>
         </div>
-          <h5><?php the_title(); ?></h5>
-        </a>
-      </div>
+        <svg viewBox="0 0 500 500" class="curve-wrap">
+            <path id="curve" d="M 50 250 A 80 50 0 1 1 300 350"/>
+            <text width="500" class="hotlink-txt">
+              <textPath xlink:href="#curve">
+                <?php the_title();?>
+              </textPath>
+            </text>
+        </svg>
+      </a>
+    </div>
     <?php
   } // END OF ELSE
   endwhile;
