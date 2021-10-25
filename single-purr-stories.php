@@ -13,7 +13,8 @@
             </div>
           </div>
           <div class="col-7 purr-content">
-            <h2><?php the_title(); ?></h2>
+            <h2 style="display:inline;"><?php the_title(); ?></h2>
+            <div class="purr-line"></div>
             <p class="card-text"><?php the_content();?></p>
             <a href="<?php echo get_page_link(get_page_by_path('purr-stories'));?>">
             <button type="button" class="btn ncf-btn">Back to Purr Stories</button></a>

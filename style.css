@@ -53,6 +53,12 @@ a {
   color: var(--ncf-dark);
 }
 
+a.checkout-button.button.alt.wc-forward {
+  background: var(--ncf-pink);
+  font-size: 1rem;
+  color: var(--ncf-light);
+}
+
 /* header set */
 /* ===================== */
 h1,
@@ -72,16 +78,19 @@ a {
 
 h2 {
   font-size: 2rem;
+  color: var(--ncf-pink);
 }
 
 p {
   font-size: 1.5rem;
 }
 
+a {
+  color: var(--ncf-pink);
+}
+
 /* variable styles */
 /* ===================== */
-
-/* NOTE look up css variables l8r */
 
 :root {
   /* colours */
@@ -93,6 +102,8 @@ p {
   --ncf-light: #f9f4ef;
   /* section margins */
   --new-section: 100px;
+  /* border radius for curving edges */
+  --border-radius: 15px;
 }
 
 
@@ -289,15 +300,32 @@ textPath {
 .purr-img img {
   width: 100%;
   height: auto;
-  border-radius: 15px;
+  border-radius: var(--border-radius);
 }
 
 .purr-content {
   margin-left: 70px;
 }
 
+.purr-content a {
+  color: var(--ncf-pink);
+}
+
+.purr-line {
+  display: inline-block;
+  position: relative;
+  top: -8px;
+  width: 15%;
+  height: 2px;
+  background: var(--ncf-pink);
+}
+
 /* news-template.php */
 /* ====================================================== */
+
+.card {
+  border-radius: var(--border-radius);
+}
 
 .news-card {
   border-bottom: 3px solid var(--ncf-pink);
@@ -329,6 +357,45 @@ textPath {
   color: var(--ncf-light);
 }
 
+/* woocommerce.php */
+/* ====================================================== */
+
+.woocommerce ul.products li.product a img {
+  border-radius: var(--border-radius);
+}
+
+/* content-single-product.php */
+/* ====================================================== */
+
+.woocommerce-message {
+  border-top-color: var(--ncf-pink);
+}
+
+.woocommerce-message::before {
+  color: var(--ncf-pink);
+}
+
+.stars a,
+.active {
+  color: var(--ncf-pink);
+}
+
+button.single_add_to_cart_button.button.alt{
+  background: var(--ncf-ps-blue);
+  color: var(--ncf-dark);
+}
+
+.input-text.qty.text {
+  height: 37px;
+}
+
+select.orderby,
+img.wp-post-image,
+textarea#comment,
+input#author,
+input#email {
+  border-radius: var(--border-radius);
+}
 
 /* footer.php */
 /* ====================================================== */
@@ -356,4 +423,8 @@ footer {
   max-width: 200px;
   height: auto;
   padding-bottom: 20px;
+}
+
+.fa {
+  font-size: 50px;
 }

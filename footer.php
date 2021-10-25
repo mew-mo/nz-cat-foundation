@@ -11,30 +11,33 @@
         <!--Grid column-->
         <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
           <h5 class="text-uppercase">Pages</h5>
-
           <?php wp_list_pages(); ?>
-
-          <!-- NOTE: look further into this, see if there are better ways to organise and arrange it...,, -->
-
-          <!-- <ul class="list-unstyled mb-0">
-            <li>
-              <a href="#!" class="text-white">Link 1</a>
-            </li>
-            <li>
-              <a href="#!" class="text-white">Link 2</a>
-            </li>
-            <li>
-              <a href="#!" class="text-white">Link 3</a>
-            </li>
-            <li>
-              <a href="#!" class="text-white">Link 4</a>
-            </li>
-          </ul> -->
         </div>
         <!--Grid column-->
 
         <!--Grid column-->
         <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+          <h5 class="text-uppercase">Find Us</h5>
+
+          <ul class="list-unstyled mb-0">
+            <li>
+              <a href="#!" class="text-white">PH: 09 412 2636</a>
+            </li>
+            <li class="social-icons">
+              <a href="https://www.instagram.com/the_nz_cat_foundation/?hl=en" class="text-white"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+              <a href="https://www.facebook.com/thenzcatfoundation/" class="text-white"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
+            </li>
+            <li>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Link 4</a>
+            </li>
+          </ul>
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <!-- <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
           <h5 class="text-uppercase">Links</h5>
 
           <ul class="list-unstyled mb-0">
@@ -51,28 +54,7 @@
               <a href="#!" class="text-white">Link 4</a>
             </li>
           </ul>
-        </div>
-        <!--Grid column-->
-
-        <!--Grid column-->
-        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-          <h5 class="text-uppercase">Links</h5>
-
-          <ul class="list-unstyled mb-0">
-            <li>
-              <a href="#!" class="text-white">Link 1</a>
-            </li>
-            <li>
-              <a href="#!" class="text-white">Link 2</a>
-            </li>
-            <li>
-              <a href="#!" class="text-white">Link 3</a>
-            </li>
-            <li>
-              <a href="#!" class="text-white">Link 4</a>
-            </li>
-          </ul>
-        </div>
+        </div> -->
         <!--Grid column-->
 
         <!--Grid column-->
@@ -104,8 +86,8 @@
 
   <!-- Copyright -->
   <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-    © 2020 Copyright:
-    <a class="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+    © 2021 Copyright
+    <a class="text-white" href="https://mdbootstrap.com/">NZ Cat Foundation</a>
   </div>
   <!-- Copyright -->
 </footer>
