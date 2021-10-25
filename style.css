@@ -376,13 +376,19 @@ textPath {
 }
 
 .stars a,
-.active {
+.active,
+span.required {
   color: var(--ncf-pink);
 }
 
 button.single_add_to_cart_button.button.alt{
   background: var(--ncf-ps-blue);
   color: var(--ncf-dark);
+}
+
+span.woocommerce-Price-amount,
+span#reply-title {
+  color: var(--ncf-blue);
 }
 
 .input-text.qty.text {
@@ -395,6 +401,45 @@ textarea#comment,
 input#author,
 input#email {
   border-radius: var(--border-radius);
+}
+
+.woocommerce-Reviews-title,
+.woocommerce-noreviews {
+  display: inline-block;
+}
+
+.woocommerce-noreviews {
+  margin-left: 20px;
+}
+
+#commentform {
+  margin-top: 30px;
+}
+
+input#author,
+input#email {
+  display: inline-block;
+  width: 40%;
+  border: none;
+  margin-left: 10px;
+}
+
+p.comment-form-comment {
+  display: inline-block;
+  position: relative;
+  top: -25px;
+  float: right;
+  width: 50%;
+}
+
+p.comment-form-cookies-consent {
+  display: inline;
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+
+input#submit.submit {
+  margin-top: 20px;
 }
 
 /* footer.php */
