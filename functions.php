@@ -5,6 +5,13 @@
 add_theme_support('post-thumbnails');
 add_theme_support('woocommerce');
 
+// excerpt length
+// =========================================
+function new_excerpt_length() {
+  return 20;
+}
+add_filter('excerpt_length', 'new_excerpt_length');
+
 // importing stylesheet
 // =========================================
 function import_stylesheet() {
@@ -74,6 +81,12 @@ add_action('init', 'create_purr_stories');
 
 // setting up news post taxonomies
 // =========================================
+
+// this taxonomy includes:
+  // * NZCF Updates
+  // * TV Appearances
+  // * Positive Stories
+  // * Cat News in NZ
 function create_news_taxonomy() {
   $labels = array(
     'name' => 'News Types',
@@ -101,5 +114,107 @@ function create_news_taxonomy() {
 }
 
 add_action('init', 'create_news_taxonomy', 0);
+
+// this taxonomy includes:
+  // * Article
+  // * Video
+// is for a more general tagging purpose
+function create_newstag_taxonomy() {
+  $labels = array(
+    'name' => 'Tags',
+    'singular_name' => 'Tag',
+    'search_items' => 'Search Tags',
+    'all_items' => 'All Tags',
+    'parent_item' => 'Parent Tag',
+    'parent_item_colon' => 'Parent Tag:',
+    'edit_item' => 'Edit Tag',
+    'update_item' => 'Update Tag',
+    'add_new_item' => 'Add new Tag',
+    'new_item_name' => 'New Tag',
+    'menu_name' => 'Tag'
+  );
+
+  register_taxonomy(
+    'tags',
+    array('news-posts'),
+    array(
+      'hierarchical' => true,
+      'labels' => $labels,
+      'show_ui' => true
+    )
+  );
+}
+
+add_action('init', 'create_newstag_taxonomy', 0);
+
+// making frontpage content editable
+// =========================================
+
+function fp_content_customize($wp_customize) {
+  $wp_customize->add_section('fp_section', array(
+    'title' => 'NZCF Landing Content', 'custom_setting',
+    'priority' => 0
+  ));
+  //
+  // // Title
+  // // ========
+  $wp_customize->add_setting('nzcf_title', array(
+    'default' => 'New Zealand Cat Foundation'
+  ));
+
+  $wp_customize->add_control('nzcf_title', array(
+    'label' => 'Enter page Title',
+    'section' => 'fp_section',
+    'settings' => 'nzcf_title',
+    'type' => 'text'
+  ));
+  //
+  // // Tagline
+  // // ========
+  $wp_customize->add_setting('nzcf_tagline', array(
+    'default' => 'Helping the Helpless'
+  ));
+
+  $wp_customize->add_control('nzcf_tagline', array(
+    'label' => 'Enter tagline',
+    'section' => 'fp_section',
+    'settings' => 'nzcf_tagline',
+    'type' => 'text'
+  ));
+  //
+  // // Intro txt title
+  // // ========
+  $wp_customize->add_setting('intro_title', array(
+    'default' => 'You make a Difference'
+  ));
+
+  $wp_customize->add_control('intro_title', array(
+    'label' => 'Enter introductory section Title',
+    'section' => 'fp_section',
+    'settings' => 'intro_title',
+    'type' => 'text'
+  ));
+
+  //   // Intro txt content
+  //   // ========
+    $wp_customize->add_setting('intro_content', array(
+      'default' => 'There are so many abandoned and       unwanted cats and kittens in our Auckland communities. Our aim is to de-sex, vaccinate, and microchip every stray cat in the hope that one day each of them will have a loving home.
+                <br><br>
+
+      We are committed to educating the community, particularly New Zealand youth. Education of our new generation is paramount, teaching our young people to embrace their responsibility to care for their cats. Our stance is that we do not have a "cat problem"; we have a "people problem".
+                <br><br>
+
+      We offer a sanctuary to unwanted stray cats in a protected environment where all their needs are met in an indoor/outdoor environment.'
+    ));
+
+    $wp_customize->add_control('intro_content', array(
+      'label' => 'Enter introductory section content',
+      'section' => 'fp_section',
+      'settings' => 'intro_content',
+      'type' => 'textarea'
+  ));
+} //end funct
+
+add_action('customize_register', 'fp_content_customize');
 
 ?>

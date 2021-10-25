@@ -18,8 +18,6 @@ Tags: cat foundation, new zealand, cats, non-profit organisation, charity
 
 */
 
- /* NOTE FOR ME: add screenshot.png of the wbesite in later as a preeeeview */
-
  /* universal elements */
  /* ===================== */
 body {
@@ -45,6 +43,13 @@ a {
   background: var(--ncf-ps-blue);
   font-size: 1.5em;
   color: var(--ncf-dark);
+  transition: all .3s ease;
+}
+
+.ncf-btn:hover {
+  background: var(--ncf-blue);
+  font-size: 1.5em;
+  transition: all .3s ease;
 }
 
 .ncf-sub-btn {
@@ -82,7 +87,7 @@ h2 {
 }
 
 p {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
 }
 
 a {
@@ -120,7 +125,7 @@ a {
 }
 
 /* CTA item */
-.menu-item-25 .nav-link {
+.menu-item-18 .nav-link {
   color: var(--ncf-light);
   background: var(--ncf-pink);
 }
@@ -345,6 +350,10 @@ textPath {
   object-fit: cover;
 }
 
+.card p {
+  font-size: 1rem;
+}
+
 .date-posted {
   font-size: 1rem;
   color: var(--ncf-dark);
@@ -401,6 +410,12 @@ textarea#comment,
 input#author,
 input#email {
   border-radius: var(--border-radius);
+}
+
+.woocommerce div.product div.images img {
+  width: 50%;
+  float: right;
+  margin-right: 10%;
 }
 
 .woocommerce-Reviews-title,

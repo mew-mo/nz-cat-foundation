@@ -44,13 +44,15 @@ if ( have_posts() ) :
           <a href="<?php the_permalink();?>">
             <?php the_title(); ?></h4>
           </a>
-          <p class="date-posted">Posted: <?php echo get_the_date('F j, Y');?> <?php the_time();?></p>
+          <p class="date-posted"><?php
+          echo get_the_term_list($post->ID, 'tags', '<div style="display:inline;">', ' ', '</div>');
+          ?> • Posted: <?php echo get_the_date('F j, Y');?> <?php the_time();?></p>
 
           <?php
           echo get_the_term_list($post->ID, 'news-type', '<div class="news-tag">', ' ', '</div>');
           ?></p>
           <hr>
-          <p class="card-text"><?php the_content();?></p>
+          <p class="card-text"><?php the_excerpt();?></p>
           <a href="<?php the_permalink();?>" style="color:white;"><button type="button" class="btn ncf-sub-btn">Read more</button></a>
         </div>
       </div>
