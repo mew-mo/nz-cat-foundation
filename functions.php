@@ -87,6 +87,7 @@ add_action('init', 'create_purr_stories');
   // * TV Appearances
   // * Positive Stories
   // * Cat News in NZ
+// more specific types of news
 function create_news_taxonomy() {
   $labels = array(
     'name' => 'News Types',

@@ -35,6 +35,7 @@ if ( have_posts() ) : $postcount = 0;
 
     if ($postcount == 1) {
     ?>
+    <!-- in case we want to style the latest post differently, seperating it from the others -->
   <div class="col-4 mt-5" style="height:300px;">
     <a href="<?php the_permalink();?>">
       <div class="hotlink-img-wrapper">
@@ -51,7 +52,7 @@ if ( have_posts() ) : $postcount = 0;
     </a>
   </div>
   <?php
-}  //closing bracket for the if statement that is at the beginning of this codeblock. IT IS IMPORTNANT
+}  //closing bracket for the if statement that is at the beginning of this php tag
   else {
     ?>
     <!-- else-> all of the normal posts show! -->
@@ -82,7 +83,6 @@ if ( have_posts() ) : $postcount = 0;
 
 </div>
 <!-- end container -->
-
 
   <?php get_footer(); ?>
 </html>

@@ -62,18 +62,6 @@
     </div>
     <!-- make a difference section ends -->
 
-    <!-- community benefits section -->
-    <!-- <div class="fp-benefits row">
-      <h3>Community Benefits</h3>
-    </div> -->
-    <!-- community benefits section ends -->
-
-    <!-- our mission section -->
-    <!-- <div class="fp-mission row">
-      <h3>Our Mission</h3>
-    </div> -->
-    <!-- our mission section ends -->
-
   </div>
   <!-- container ends -->
 </div>

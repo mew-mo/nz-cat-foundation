@@ -32,13 +32,10 @@ get_header(); ?>
 if ( have_posts() ) :
 
   while (have_posts() ) : the_post(); ?>
-  <!-- this is where it loops over each post -->
   <div class="col-4 mt-5">
     <div class="news-card">
       <div class="card" style="width: 100%;">
         <?php the_post_thumbnail('medium_large', ['class' => 'card-img-top']); ?>
-        <!-- 1st arg is img size -->
-        <!-- 2nd arg is an array of attributes -->
         <div class="card-body">
           <h4 class="card-title">
           <a href="<?php the_permalink();?>">
@@ -48,7 +45,7 @@ if ( have_posts() ) :
           echo get_the_term_list($post->ID, 'tags', '<div style="display:inline;">', ' ', '</div>');
           ?> • Posted: <?php echo get_the_date('F j, Y');?> <?php the_time();?></p>
 
-          <?php
+          <p><?php
           echo get_the_term_list($post->ID, 'news-type', '<div class="news-tag">', ' ', '</div>');
           ?></p>
           <hr>

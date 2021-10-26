@@ -1,9 +1,8 @@
 <?php get_header(); ?>
     <div class="container mt-5">
-      <h1 style="display:inline;"><?php the_title(); ?></h1>
-      <?php the_content(); ?>
-
       <div class="row">
+        <h1><?php the_title(); ?></h1>
+        <?php the_content(); ?>
       </div>
       <!-- end row -->
     </div>

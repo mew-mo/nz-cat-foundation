@@ -1,5 +1,11 @@
 <?php get_header(); ?>
-
-<?php the_content(); ?>
-
-<?php get_footer(); ?>
+    <div class="container mt-5">
+      <div class="row">
+        <h1><?php the_title(); ?></h1>
+        <?php the_content(); ?>
+      </div>
+      <!-- end row -->
+    </div>
+    <!-- end container -->
+  <?php get_footer(); ?>
+</html>

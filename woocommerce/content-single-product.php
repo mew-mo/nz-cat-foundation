@@ -71,6 +71,7 @@ if ( post_password_required() ) {
 	 */
 
 	remove_action('woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20);
+	// don't want the related products field on my single-product pages, so removing it.
 
 	do_action( 'woocommerce_after_single_product_summary' );
 	?>
