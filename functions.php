@@ -87,7 +87,6 @@ add_action('init', 'create_purr_stories');
   // * TV Appearances
   // * Positive Stories
   // * Cat News in NZ
-// more specific types of news
 function create_news_taxonomy() {
   $labels = array(
     'name' => 'News Types',
@@ -156,7 +155,21 @@ function fp_content_customize($wp_customize) {
     'title' => 'NZCF Landing Content', 'custom_setting',
     'priority' => 0
   ));
-  //
+
+  // // Hero Image
+  // // ========
+
+  $wp_customize->add_setting('custom_hero_img', array(
+    'default' => ''
+  ));
+
+  $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'custom_bg_img', array(
+    'label' => 'Upload a background image',
+    'section' => 'img_section',
+    'settings' => 'custom_hero_img',
+    'priority' => 0
+  )));
+
   // // Title
   // // ========
   $wp_customize->add_setting('nzcf_title', array(
@@ -167,9 +180,10 @@ function fp_content_customize($wp_customize) {
     'label' => 'Enter page Title',
     'section' => 'fp_section',
     'settings' => 'nzcf_title',
-    'type' => 'text'
+    'type' => 'text',
+    'priority' => 0
   ));
-  //
+
   // // Tagline
   // // ========
   $wp_customize->add_setting('nzcf_tagline', array(
@@ -180,9 +194,10 @@ function fp_content_customize($wp_customize) {
     'label' => 'Enter tagline',
     'section' => 'fp_section',
     'settings' => 'nzcf_tagline',
-    'type' => 'text'
+    'type' => 'text',
+    'priority' => 50
   ));
-  //
+
   // // Intro txt title
   // // ========
   $wp_customize->add_setting('intro_title', array(
@@ -193,7 +208,8 @@ function fp_content_customize($wp_customize) {
     'label' => 'Enter introductory section Title',
     'section' => 'fp_section',
     'settings' => 'intro_title',
-    'type' => 'text'
+    'type' => 'text',
+    'priority' => 100
   ));
 
   //   // Intro txt content
@@ -212,10 +228,130 @@ function fp_content_customize($wp_customize) {
       'label' => 'Enter introductory section content',
       'section' => 'fp_section',
       'settings' => 'intro_content',
-      'type' => 'textarea'
+      'type' => 'textarea',
+      'priority' => 150
   ));
 } //end funct
 
 add_action('customize_register', 'fp_content_customize');
+
+// NOTE FOR ME add the cs for changing the bg image in here
+
+// making theme colours editable
+// =========================================
+
+function theme_color_customize_section($wp_customize) {
+  $wp_customize->add_section('theme_color_section', array(
+    'title' => 'Customize Theme Colours', 'custom_setting',
+    'priority' => 50
+  ));
+  //   // Background colour
+  //   // ========
+  $wp_customize->add_setting('bg_colorpicker', array(
+    'default' => ''
+  ));
+
+  $wp_customize->add_control(new WP_Customize_Color_Control(
+    $wp_customize, 'bg_colorpicker', array(
+      'label' => 'Background Colour',
+      'section' => 'theme_color_section',
+      'settings' => 'bg_colorpicker',
+      'priority' => 0
+    )
+  ));
+
+  //   // Main Heading Colour
+  //   // ========
+  $wp_customize->add_setting('heading_colorpicker', array(
+    'default' => ''
+  ));
+
+  $wp_customize->add_control(new WP_Customize_Color_Control(
+    $wp_customize, 'heading_colorpicker', array(
+      'label' => 'Main Heading Colour',
+      'section' => 'theme_color_section',
+      'settings' => 'heading_colorpicker',
+      'priority' => 50
+    )
+  ));
+
+  //   // Sub Heading Colour
+  //   // ========
+  $wp_customize->add_setting('subheading_colorpicker', array(
+    'default' => ''
+  ));
+
+  $wp_customize->add_control(new WP_Customize_Color_Control(
+    $wp_customize, 'subheading_colorpicker', array(
+      'label' => 'Sub Heading Colour',
+      'section' => 'theme_color_section',
+      'settings' => 'subheading_colorpicker',
+      'priority' => 100
+    )
+  ));
+
+  //   // Body Text Colour
+  //   // ========
+  $wp_customize->add_setting('bodytxt_colorpicker', array(
+    'default' => ''
+  ));
+
+  $wp_customize->add_control(new WP_Customize_Color_Control(
+    $wp_customize, 'bodytxt_colorpicker', array(
+      'label' => 'Body Text Colour',
+      'section' => 'theme_color_section',
+      'settings' => 'bodytxt_colorpicker',
+      'priority' => 150
+    )
+  ));
+
+} //end theme colour function
+
+add_action('customize_register', 'theme_color_customize_section');
+
+function theme_colorpicker_css() {
+  $bg_color = get_theme_mod('bg_colorpicker');
+  $heading_color = get_theme_mod('heading_colorpicker');
+  $subheading_color = get_theme_mod('subheading_colorpicker');
+  $bodytxt_color = get_theme_mod('bodytxt_colorpicker');
+  ?>
+  <style type="text/css">
+
+    body {
+      background: <?php echo $bg_color ?>;
+    }
+
+    h2,
+    .intro-txt h2 {
+      color:<?php echo $subheading_color ?>;
+    }
+
+    textPath {
+      fill: <?php echo $subheading_color ?>;
+    }
+
+    .line {
+      background: <?php echo $subheading_color ?>;
+    }
+
+    p {
+      color: <?php echo $bodytxt_color ?>;
+    }
+
+    .content-wrapper {
+      background: <?php echo $bg_color ?>;
+    }
+
+    .title,
+    .subtitle {
+      color:<?php echo $heading_color ?>;
+    }
+
+  </style>
+  <?php
+}
+
+add_action('wp_head','theme_colorpicker_css');
+
 
 ?>
