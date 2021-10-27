@@ -160,14 +160,34 @@ function fp_content_customize($wp_customize) {
   // // ========
 
   $wp_customize->add_setting('custom_hero_img', array(
-    'default' => ''
+    'default' => 'img/catfound.jpg'
   ));
 
   $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'custom_bg_img', array(
     'label' => 'Upload a background image',
-    'section' => 'img_section',
+    'section' => 'fp_section',
     'settings' => 'custom_hero_img',
     'priority' => 0
+  )));
+
+  // // Turn fp paws on or off
+  // // ========
+
+  $wp_customize->add_setting('paws_dropdown', array(
+    'default' => ''
+  ));
+
+  $wp_customize->add_control( new WP_Customize_Control($wp_customize, 'paws_dropdown', array(
+    'label' => 'Paws on the Front Page',
+    'description' => 'Turn paws on or off',
+    'settings' => 'paws_dropdown',
+    'priority' => 10,
+    'section' => 'fp_section',
+    'type' => 'select',
+    'choices' => array(
+      '1' => 'On',
+      '0' => 'Off'
+    )
   )));
 
   // // Title
@@ -181,7 +201,7 @@ function fp_content_customize($wp_customize) {
     'section' => 'fp_section',
     'settings' => 'nzcf_title',
     'type' => 'text',
-    'priority' => 0
+    'priority' => 50
   ));
 
   // // Tagline
@@ -195,7 +215,7 @@ function fp_content_customize($wp_customize) {
     'section' => 'fp_section',
     'settings' => 'nzcf_tagline',
     'type' => 'text',
-    'priority' => 50
+    'priority' => 100
   ));
 
   // // Intro txt title
@@ -209,7 +229,7 @@ function fp_content_customize($wp_customize) {
     'section' => 'fp_section',
     'settings' => 'intro_title',
     'type' => 'text',
-    'priority' => 100
+    'priority' => 150
   ));
 
   //   // Intro txt content
@@ -235,7 +255,24 @@ function fp_content_customize($wp_customize) {
 
 add_action('customize_register', 'fp_content_customize');
 
-// NOTE FOR ME add the cs for changing the bg image in here
+function hero_img_css() {
+  $hero_img = get_theme_mod('custom_hero_img');
+  $hero_paws = get_theme_mod('paws_dropdown');
+  ?>
+  <style type="text/css">
+    .hero_img {
+      background-image: url(<?php echo $hero_img ?>);
+    }
+
+    .big-paws {
+      opacity: <?php echo $hero_paws ?>;
+    }
+  </style>
+  <?php
+}
+
+add_action('wp_head','hero_img_css');
+
 
 // making theme colours editable
 // =========================================
@@ -283,7 +320,7 @@ function theme_color_customize_section($wp_customize) {
 
   $wp_customize->add_control(new WP_Customize_Color_Control(
     $wp_customize, 'subheading_colorpicker', array(
-      'label' => 'Sub Heading Colour',
+      'label' => 'Sub Heading Colour (Main Accent)',
       'section' => 'theme_color_section',
       'settings' => 'subheading_colorpicker',
       'priority' => 100
@@ -322,16 +359,40 @@ function theme_colorpicker_css() {
     }
 
     h2,
-    .intro-txt h2 {
+    a,
+    .purr-content a,
+    .card-title a,
+    .date-posted a,
+    .back-link,
+    .woocommerce-message::before,
+    .stars a,
+    .active,
+    span.required
+     {
       color:<?php echo $subheading_color ?>;
+    }
+
+    .menu-item-18 .nav-link,
+    .line,
+    .purr-line,
+    .news-tag a,
+    .news-taxonomy-tag,
+    a.checkout-button.button.alt.wc-forward {
+      background: <?php echo $subheading_color ?>;
+    }
+
+    .woocommerce-message {
+      border-top-color: <?php echo $subheading_color ?>;
     }
 
     textPath {
       fill: <?php echo $subheading_color ?>;
     }
 
-    .line {
-      background: <?php echo $subheading_color ?>;
+    .purr-img,
+    .news-card {
+      border-bottom: 3px solid <?php echo $subheading_color ?>;
+      border-top: 3px solid <?php echo $subheading_color ?>;
     }
 
     p {

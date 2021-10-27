@@ -42,7 +42,7 @@ if ( have_posts() ) :
             <?php the_title(); ?></h4>
           </a>
           <p class="date-posted"><?php
-          echo get_the_term_list($post->ID, 'tags', '<div style="display:inline;">', ' ', '</div>');
+          echo get_the_term_list($post->ID, 'tags', '', ' ', '');
           ?> • Posted: <?php echo get_the_date('F j, Y');?> <?php the_time();?></p>
 
           <p><?php

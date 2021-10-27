@@ -16,7 +16,7 @@
             <h2 style="display:inline;"><?php the_title(); ?></h2>
             <div class="purr-line"></div>
             <p class="date-posted"><?php
-            echo get_the_term_list($post->ID, 'tags', '<div style="display:inline;">', ' ', '</div>');
+            echo get_the_term_list($post->ID, 'tags', '', ' ', '');
             ?> • Posted: <?php echo get_the_date('F j, Y');?> <?php the_time();?></p>
 
             <p><?php
