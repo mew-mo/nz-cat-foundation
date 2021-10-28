@@ -40,17 +40,17 @@
           while (have_posts() ) : the_post(); ?>
 
         <div class="col-md-4 col-sm-12">
-          <div class="hotlink-img-wrapper">
-              <?php the_post_thumbnail('small', ['class' => 'hotlink-img']);?>
-          </div>
-          <svg viewBox="0 0 500 500" class="curve-wrap">
-              <path id="curve" d="M 50 250 A 80 50 0 1 1 300 350"/>
-              <text width="500" class="hotlink-txt">
-                <textPath xlink:href="#curve">
-                  <?php the_title();?>
-                </textPath>
-              </text>
-          </svg>
+            <div class="hotlink-img-wrapper">
+                <?php the_post_thumbnail('small', ['class' => 'hotlink-img']);?>
+            </div>
+            <svg viewBox="0 0 500 500" class="curve-wrap">
+                <path id="curve" d="M 50 250 A 80 50 0 1 1 300 350"/>
+                <text width="500" class="hotlink-txt">
+                  <textPath xlink:href="#curve">
+                    <?php the_title();?>
+                  </textPath>
+                </text>
+            </svg>
         </div>
         <?php endwhile;
         else : echo '<p> Shortcuts have not been created. </p>';

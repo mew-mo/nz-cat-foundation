@@ -61,6 +61,55 @@ function create_fp_shortcuts() {
 
 add_action('init', 'create_fp_shortcuts');
 
+// setting up shortcut metabox for linking to a specific page
+// =========================================
+
+function add_shortcut_link_box() {
+  add_meta_box(
+    'shortcut_link_metabox',
+    'Link Shortcut to a Page (NOTE: NOT FUNCTIONING YET)',
+    'shortcut_link_box_callback',
+    'shortcuts',
+    'right'
+  );
+}
+
+function shortcut_link_box_callback($post) {
+
+  // // Saving Linked Page Data
+  // // ========
+  $link_data = get_post_meta($post->ID, 'page_dropdown', true);
+
+  echo 'The current page this shortcut is linked to is <b> ' . $link_data . '</b>';
+
+  echo $link_data;
+
+  // // Creating Dropdown
+  // // ========
+  $dropdown_args = array(
+    'post_type' => 'page',
+    'name' => 'page_dropdown',
+    'sort_column' => 'menu_order, post_title',
+    'echo' => true,
+    'show_option_none' => 'Select a page',
+    'class' => 'page_dropdown',
+    'value_field' => 'post_title',
+    'id' => 'page_dropdown',
+    'selected' => $link_data
+  );
+
+  // this is driving me insane a little bit i will rest it for a brief moment of respite
+
+  wp_dropdown_pages($dropdown_args);
+
+  // NOTE this isnt working yet idk how to figure it out yet
+  // https://wordpress.stackexchange.com/questions/57293/how-to-create-a-metabox-that-will-list-all-my-pages-in-a-dropdown-selector
+  // https://wordpress.stackexchange.com/questions/210034/save-the-value-of-a-wp-dropdown-pages
+}
+
+add_action('admin_menu', 'add_shortcut_link_box');
+
+
 // setting up purr stories posttype
 // =========================================
 function create_purr_stories() {
@@ -160,7 +209,7 @@ function fp_content_customize($wp_customize) {
   // // ========
 
   $wp_customize->add_setting('custom_hero_img', array(
-    'default' => 'img/catfound.jpg'
+    'default' => ''
   ));
 
   $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'custom_bg_img', array(
@@ -260,8 +309,13 @@ function hero_img_css() {
   $hero_paws = get_theme_mod('paws_dropdown');
   ?>
   <style type="text/css">
-    .hero_img {
-      background-image: url(<?php echo $hero_img ?>);
+    .hero-img {
+      <?php
+        if ($hero_img) { ?>
+          background-image: url(<?php echo $hero_img ?>);
+          <?php
+        }
+      ?>
     }
 
     .big-paws {
@@ -367,8 +421,8 @@ function theme_colorpicker_css() {
     .woocommerce-message::before,
     .stars a,
     .active,
-    span.required
-     {
+    span.required,
+    .navbar-nav .nav-link:active {
       color:<?php echo $subheading_color ?>;
     }
 

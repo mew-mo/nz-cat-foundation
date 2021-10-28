@@ -124,6 +124,10 @@ a {
   color: var(--ncf-dark);
 }
 
+.navbar-nav .nav-link:active {
+  color: var(--ncf-pink);
+}
+
 /* CTA item */
 .menu-item-18 .nav-link {
   color: var(--ncf-light);
