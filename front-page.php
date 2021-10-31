@@ -43,6 +43,7 @@
             <div class="hotlink-img-wrapper">
                 <?php the_post_thumbnail('small', ['class' => 'hotlink-img']);?>
             </div>
+            <h2 class="hidden-title"><?php the_title();?></h2>
             <svg viewBox="0 0 500 500" class="curve-wrap">
                 <path id="curve" d="M 50 250 A 80 50 0 1 1 300 350"/>
                 <text width="500" class="hotlink-txt">

@@ -297,6 +297,8 @@ textPath {
 
 .hidden-title {
   display: none;
+  font-size: 1.3rem;
+  margin-top: 5px;
   text-align: center;
 }
 
@@ -319,7 +321,8 @@ textPath {
   border-radius: var(--border-radius);
 }
 
-.purr-content {
+.purr-content,
+.news-content {
   margin-left: 70px;
 }
 
@@ -480,7 +483,8 @@ footer {
   text-align: left;
 }
 
-.pagenav a {
+.pagenav a,
+footer a {
   color: var(--ncf-light);
   transition: all .3s ease;
 }
@@ -496,6 +500,14 @@ footer {
   padding-bottom: 20px;
 }
 
-.fa {
-  font-size: 50px;
+.social-icons a i {
+  font-size: 30px;
+  cursor: pointer;
+  padding-left: 5px;
+  transition: all .3s ease;
+}
+
+.social-icons a i:hover {
+  color: var(--ncf-ps-pink);
+  transition: all .3s ease;
 }

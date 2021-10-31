@@ -478,6 +478,36 @@ function theme_color_customize_section($wp_customize) {
     )
   ));
 
+  //   // Sub Btn Colour
+  //   // ========
+  $wp_customize->add_setting('subbtn_colorpicker', array(
+    'default' => ''
+  ));
+
+  $wp_customize->add_control(new WP_Customize_Color_Control(
+    $wp_customize, 'subbtn_colorpicker', array(
+      'label' => 'Sub Button Colour',
+      'section' => 'theme_color_section',
+      'settings' => 'subbtn_colorpicker',
+      'priority' => 180
+    )
+  ));
+
+  //   // Sub Btn Text Colour
+  //   // ========
+  $wp_customize->add_setting('subbtn_txt_colorpicker', array(
+    'default' => ''
+  ));
+
+  $wp_customize->add_control(new WP_Customize_Color_Control(
+    $wp_customize, 'subbtn_txt_colorpicker', array(
+      'label' => 'Sub Button Text Colour',
+      'section' => 'theme_color_section',
+      'settings' => 'subbtn_txt_colorpicker',
+      'priority' => 200
+    )
+  ));
+
 } //end theme colour function
 
 add_action('customize_register', 'theme_color_customize_section');
@@ -487,6 +517,9 @@ function theme_colorpicker_css() {
   $heading_color = get_theme_mod('heading_colorpicker');
   $subheading_color = get_theme_mod('subheading_colorpicker');
   $bodytxt_color = get_theme_mod('bodytxt_colorpicker');
+  $subbtn_color = get_theme_mod('subbtn_colorpicker');
+  $subbtntxt_color = get_theme_mod('subbtn_txt_colorpicker');
+
   ?>
   <style type="text/css">
 
@@ -527,8 +560,16 @@ function theme_colorpicker_css() {
 
     .purr-img,
     .news-card {
-      border-bottom: 3px solid <?php echo $subheading_color ?>;
-      border-top: 3px solid <?php echo $subheading_color ?>;
+      border-bottom: 3px solid <?php if ($subheading_color) {
+        echo $subheading_color;
+      } else {
+        ?> var(--ncf-pink); <?php
+      }  ?>;
+      border-top: 3px solid <?php if ($subheading_color) {
+        echo $subheading_color;
+      } else {
+        ?> var(--ncf-pink); <?php
+      }  ?>;
     }
 
     p {
@@ -544,20 +585,32 @@ function theme_colorpicker_css() {
       color:<?php echo $heading_color ?>;
     }
 
+    .ncf-btn,
+    .ncf-sub-btn {
+      background: <?php echo $subbtn_color ?>;
+      color: <?php echo $subbtntxt_color ?>;
+      transition: all .3s ease;
+    }
+
+    .ncf-btn:hover,
+    .ncf-sub-btn:hover {
+      opacity: .5;
+      transition: all .3s ease;
+    }
+
   </style>
   <?php
 }
 
 add_action('wp_head','theme_colorpicker_css');
 
-
 // making purrstories page editable - purr stories section
 // =========================================
 
 function purr_stories_section($wp_customize) {
   $wp_customize->add_section('purr_stories_section', array(
-    'title' => 'Customize Purr Stories Page', 'custom_setting',
-    'priority' => 60
+    'title' => 'Purr Stories Content', 'custom_setting',
+    'priority' => 70
   ));
 
   //   // Bootstrap Column No.
@@ -582,17 +635,18 @@ function purr_stories_section($wp_customize) {
   // // ========
 
   $wp_customize->add_setting('border_number', array(
-    'default' => 999
+    'default' => 200
   ));
 
   $wp_customize->add_control('border_number', array(
     'label' => 'Enter Border Radius',
+    'description' => '200 is the roundest and will have a curved title!',
     'section' => 'purr_stories_section',
     'settings' => 'border_number',
     'type' => 'number',
     'input_attrs' => array(
       'min' => 1,
-      'max' => 999
+      'max' => 200
     ),
     'priority' => 10
   ));
@@ -627,5 +681,120 @@ function purrstories_css() {
 }
 
 add_action('wp_head','purrstories_css');
+
+
+// making footer content editable - footer section
+// =========================================
+
+function footer_section($wp_customize) {
+  $wp_customize->add_section('footer_section', array(
+    'title' => 'Footer Content', 'custom_setting',
+    'priority' => 80
+  ));
+
+  //   // Background Colour
+  //   // ========
+  $wp_customize->add_setting('ftbg_colorpicker', array(
+    'default' => ''
+  ));
+
+  $wp_customize->add_control(new WP_Customize_Color_Control(
+    $wp_customize, 'ftbg_colorpicker', array(
+      'label' => 'Footer Background Colour',
+      'section' => 'footer_section',
+      'settings' => 'ftbg_colorpicker',
+      'priority' => 0
+    )
+  ));
+
+  // // Footer TXT Colour
+  // // ========
+
+  $wp_customize->add_setting('fttxt_colorpicker', array(
+    'default' => ''
+  ));
+
+  $wp_customize->add_control(new WP_Customize_Color_Control(
+    $wp_customize, 'fttxt_colorpicker', array(
+      'label' => 'Footer Text Colour',
+      'section' => 'footer_section',
+      'settings' => 'fttxt_colorpicker',
+      'priority' => 10
+    )
+  ));
+
+  // // Footer TXT Hover Colour
+  // // ========
+
+  $wp_customize->add_setting('fttxt_hov_colorpicker', array(
+    'default' => ''
+  ));
+
+  $wp_customize->add_control(new WP_Customize_Color_Control(
+    $wp_customize, 'fttxt_hov_colorpicker', array(
+      'label' => 'Footer Text Hover Colour',
+      'section' => 'footer_section',
+      'settings' => 'fttxt_hov_colorpicker',
+      'priority' => 20
+    )
+  ));
+
+  //   // Sponsor img size
+  //   // ========
+  $wp_customize->add_setting('sponsor_img_size', array(
+    'default' => 200
+  ));
+
+  $wp_customize->add_control('sponsor_img_size', array(
+    'label' => 'Sponsor Image Size',
+    'section' => 'footer_section',
+    'settings' => 'sponsor_img_size',
+    'type' => 'number',
+    'input_attrs' => array(
+      'min' => 0,
+      'max' => 200
+    ),
+    'priority' => 30
+  ));
+
+} //end section function
+
+add_action('customize_register', 'footer_section');
+
+function footer_css() {
+  $bg = get_theme_mod('ftbg_colorpicker');
+  $txt = get_theme_mod('fttxt_colorpicker');
+  $txthov = get_theme_mod('fttxt_hov_colorpicker');
+  $imgsize = get_theme_mod('sponsor_img_size');
+
+  ?>
+  <style type="text/css">
+
+  footer {
+    background: <?php echo $bg ?>;
+    color: <?php echo $txt ?>;
+  }
+
+  .pagenav a,
+  .social-icons a i,
+  footer a {
+    color: <?php echo $txt ?>;
+  }
+
+  .pagenav a:hover,
+  .social-icons a i:hover {
+    color: <?php echo $txthov ?>;
+  }
+
+  .sponsor-item a img {
+    width: <?php echo $imgsize ?>px;
+  }
+
+  </style>
+  <?php
+}
+
+add_action('wp_head','footer_css');
+
 
 ?>

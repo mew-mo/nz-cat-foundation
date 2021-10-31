@@ -15,7 +15,6 @@ query_posts(
     'post_type' => 'news-posts'
   )
 );
-// checks what the posts are. make sure they MATCH
 ?>
 
 <?php

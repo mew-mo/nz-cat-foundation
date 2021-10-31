@@ -21,7 +21,7 @@
 
           <ul class="list-unstyled mb-0">
             <li>
-              <a href="#!" class="text-white">PH: 09 412 2636</a>
+              <a href="#!">PH: 09 412 2636</a>
             </li>
             <li class="social-icons">
               <a href="https://www.instagram.com/the_nz_cat_foundation/?hl=en" class="text-white"><i class="fa fa-instagram" aria-hidden="true"></i></a>
@@ -66,7 +66,7 @@
   <!-- Copyright -->
   <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
     © 2021 Copyright
-    <a class="text-white" href="https://mdbootstrap.com/">NZ Cat Foundation</a>
+    <a href="https://mdbootstrap.com/">NZ Cat Foundation</a>
   </div>
   <!-- Copyright -->
 </footer>

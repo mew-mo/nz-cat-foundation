@@ -12,7 +12,7 @@
               <?php the_post_thumbnail('medium', ['class' => 'news-thumb']); ?>
             </div>
           </div>
-          <div class="col-7 purr-content">
+          <div class="col-7 news-content">
             <h2 style="display:inline;"><?php the_title(); ?></h2>
             <div class="purr-line"></div>
             <p class="date-posted"><?php
