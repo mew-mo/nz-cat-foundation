@@ -17,7 +17,14 @@
   <!-- NAV  -->
 	<nav class="navbar navbar-expand-lg">
 
-		<a class="navbar-brand" href="<?php echo home_url(); ?>"><img src="<?php bloginfo('stylesheet_directory');?>/img/logo.svg" alt="NZ Cat Foundation Logo" id="logo"></a>
+		<a class="navbar-brand" href="<?php echo home_url(); ?>"><img src="
+			<?php
+			$logo = get_theme_mod('custom_logo');
+        if ($logo) {
+           echo $logo;
+        } else {
+				  bloginfo('stylesheet_directory');?>/img/logo.svg<?php
+				}?>" alt="NZ Cat Foundation Logo" id="logo"></a>
 
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<?php $menu_args = ['theme_location' => 'primary', 'menu_class' => 'navbar-nav']; ?>

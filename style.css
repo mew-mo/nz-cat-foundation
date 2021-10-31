@@ -292,6 +292,14 @@ textPath {
   opacity: 0;
 }
 
+/* purr-stories.php */
+/* ====================================================== */
+
+.hidden-title {
+  display: none;
+  text-align: center;
+}
+
 /* single-purr-stories.php */
 /* ====================================================== */
 

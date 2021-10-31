@@ -36,11 +36,12 @@ if ( have_posts() ) : $postcount = 0;
     if ($postcount == 1) {
     ?>
     <!-- in case we want to style the latest post differently, seperating it from the others -->
-  <div class="col-4 mt-5" style="height:300px;">
+  <div class="col-<?php echo get_theme_mod('ps_col_number');?> mt-5" style="height:300px;">
     <a href="<?php the_permalink();?>">
       <div class="hotlink-img-wrapper">
         <?php the_post_thumbnail('medium_large', ['class' => 'hotlink-img']); ?>
       </div>
+      <h2 class="hidden-title"><?php the_title();?></h2>
       <svg viewBox="0 0 500 500" class="curve-wrap">
           <path id="curve" d="M 50 250 A 80 50 0 1 1 300 350"/>
           <text width="500" class="hotlink-txt">
@@ -56,11 +57,12 @@ if ( have_posts() ) : $postcount = 0;
   else {
     ?>
     <!-- else-> all of the normal posts show! -->
-    <div class="col-4 mt-5" style="height:300px;">
+    <div class="col-<?php echo get_theme_mod('ps_col_number');?> mt-5" style="height:300px;">
       <a href="<?php the_permalink();?>">
         <div class="hotlink-img-wrapper">
           <?php the_post_thumbnail('medium_large', ['class' => 'hotlink-img']); ?>
         </div>
+        <h2 class="hidden-title"><?php the_title();?></h2>
         <svg viewBox="0 0 500 500" class="curve-wrap">
             <path id="curve" d="M 50 250 A 80 50 0 1 1 300 350"/>
             <text width="500" class="hotlink-txt">

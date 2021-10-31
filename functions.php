@@ -196,7 +196,89 @@ function create_newstag_taxonomy() {
 
 add_action('init', 'create_newstag_taxonomy', 0);
 
-// making frontpage content editable
+// making navbar content editable - nav section
+// =========================================
+
+function nav_content_customize($wp_customize) {
+  $wp_customize->add_section('nav_section', array(
+    'title' => 'Navbar Content', 'custom_setting',
+    'priority' => 0
+  ));
+
+  // // Logo Image
+  // // ========
+
+  $wp_customize->add_setting('custom_logo', array(
+    'default' => ''
+  ));
+
+  $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'custom_logo', array(
+    'label' => 'Upload a logo image',
+    'section' => 'nav_section',
+    'settings' => 'custom_logo',
+    'priority' => 0
+  )));
+
+  // // Turn hover paws on or off
+  // // ========
+
+  $wp_customize->add_setting('paws_hover', array(
+    'default' => ''
+  ));
+
+  $wp_customize->add_control( new WP_Customize_Control($wp_customize, 'paws_hover', array(
+    'label' => 'Paws on Link Hover',
+    'description' => 'Turn paws on or off',
+    'settings' => 'paws_hover',
+    'priority' => 10,
+    'section' => 'nav_section',
+    'type' => 'select',
+    'choices' => array(
+      '1' => 'On',
+      '0' => 'Off'
+    )
+  )));
+
+  // // Link hover colour
+  // // ========
+  $wp_customize->add_setting('navlink_colorpicker', array(
+    'default' => ''
+  ));
+
+  $wp_customize->add_control(new WP_Customize_Color_Control(
+    $wp_customize, 'navlink_colorpicker', array(
+      'label' => 'Nav Link Hover Colour',
+      'section' => 'nav_section',
+      'settings' => 'navlink_colorpicker',
+      'priority' => 50
+    )
+  ));
+
+} //end funct
+
+add_action('customize_register', 'nav_content_customize');
+
+function nav_css() {
+  $hover_paws = get_theme_mod('paws_hover');
+  $navlink_hover_color = get_theme_mod('navlink_colorpicker');
+  ?>
+  <style type="text/css">
+    .nav-paw,
+    .menu-item:hover .nav-paw {
+      opacity: <?php echo $hover_paws ?>;
+    }
+
+    .menu-item .nav-link:hover:not(.menu-item-18 .nav-link:hover) {
+      color: <?php echo $navlink_hover_color ?>;
+    }
+
+  </style>
+  <?php
+}
+
+add_action('wp_head','nav_css');
+
+// making frontpage content editable - fp section
 // =========================================
 
 function fp_content_customize($wp_customize) {
@@ -328,7 +410,7 @@ function hero_img_css() {
 add_action('wp_head','hero_img_css');
 
 
-// making theme colours editable
+// making theme colours editable - theme colour section
 // =========================================
 
 function theme_color_customize_section($wp_customize) {
@@ -468,5 +550,82 @@ function theme_colorpicker_css() {
 
 add_action('wp_head','theme_colorpicker_css');
 
+
+// making purrstories page editable - purr stories section
+// =========================================
+
+function purr_stories_section($wp_customize) {
+  $wp_customize->add_section('purr_stories_section', array(
+    'title' => 'Customize Purr Stories Page', 'custom_setting',
+    'priority' => 60
+  ));
+
+  //   // Bootstrap Column No.
+  //   // ========
+  $wp_customize->add_setting('ps_col_number', array(
+    'default' => 4
+  ));
+
+  $wp_customize->add_control('ps_col_number', array(
+    'label' => 'Enter Column Number',
+    'section' => 'purr_stories_section',
+    'settings' => 'ps_col_number',
+    'type' => 'number',
+    'input_attrs' => array(
+      'min' => 1,
+      'max' => 12
+    ),
+    'priority' => 0
+  ));
+
+  // // Shape of the image borders
+  // // ========
+
+  $wp_customize->add_setting('border_number', array(
+    'default' => 999
+  ));
+
+  $wp_customize->add_control('border_number', array(
+    'label' => 'Enter Border Radius',
+    'section' => 'purr_stories_section',
+    'settings' => 'border_number',
+    'type' => 'number',
+    'input_attrs' => array(
+      'min' => 1,
+      'max' => 999
+    ),
+    'priority' => 10
+  ));
+
+} //end section function
+
+add_action('customize_register', 'purr_stories_section');
+
+function purrstories_css() {
+  $border = get_theme_mod('border_number');
+  ?>
+  <style type="text/css">
+
+  .hotlink-img-wrapper {
+    border-radius: <?php echo $border ?>px;
+  }
+
+  <?php if ($border < 200) {
+    ?>
+    textPath {
+      display: none;
+    }
+
+    .hidden-title {
+      display: block;
+    }
+    <?php
+  } ?>
+
+  </style>
+  <?php
+}
+
+add_action('wp_head','purrstories_css');
 
 ?>
