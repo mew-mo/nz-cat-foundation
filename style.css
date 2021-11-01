@@ -64,6 +64,12 @@ a.checkout-button.button.alt.wc-forward {
   color: var(--ncf-light);
 }
 
+.inline {
+  display: inline;
+  width: auto;
+  position: relative;
+}
+
 /* header set */
 /* ===================== */
 h1,
@@ -469,6 +475,12 @@ p.comment-form-cookies-consent {
 
 input#submit.submit {
   margin-top: 20px;
+}
+
+/* about-template.php */
+/* ====================================================== */
+.abt-txt .purr-line {
+  top: 17px;
 }
 
 /* footer.php */

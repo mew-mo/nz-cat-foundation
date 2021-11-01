@@ -44,12 +44,11 @@
 				menuItems[i].children[0].innerHTML += '<img src="<?php bloginfo('stylesheet_directory');?>/img/single-paw.svg" alt="pawprint" class="nav-paw">';
 			}
 		}
-
 	</script>
 
  	<!-- starting the body -->
   <body <?php body_class(); ?>>
   <!-- For adding classes to the body that you can target with css, will change from page to page -->
 
-  <?php wp_head(); ?>
+  <?php wp_head();?>
   <!-- Links the styles -->

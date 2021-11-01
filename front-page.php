@@ -40,9 +40,18 @@
           while (have_posts() ) : the_post(); ?>
 
         <div class="col-md-4 col-sm-12">
+          <a href="<?php
+          $link = get_post_meta(get_the_ID(), 'page_dropdown', true);
+          if ($link) {
+            echo get_page_link(get_page_by_path($link));
+          } else {
+            echo '#';
+          }
+          ?>">
             <div class="hotlink-img-wrapper">
                 <?php the_post_thumbnail('small', ['class' => 'hotlink-img']);?>
             </div>
+
             <h2 class="hidden-title"><?php the_title();?></h2>
             <svg viewBox="0 0 500 500" class="curve-wrap">
                 <path id="curve" d="M 50 250 A 80 50 0 1 1 300 350"/>
@@ -52,6 +61,7 @@
                   </textPath>
                 </text>
             </svg>
+          </a>
         </div>
         <?php endwhile;
         else : echo '<p> Shortcuts have not been created. </p>';

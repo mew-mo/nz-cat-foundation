@@ -67,7 +67,7 @@ add_action('init', 'create_fp_shortcuts');
 function add_shortcut_link_box() {
   add_meta_box(
     'shortcut_link_metabox',
-    'Link Shortcut to a Page (NOTE: NOT FUNCTIONING YET)',
+    'Link Shortcut to a Page',
     'shortcut_link_box_callback',
     'shortcuts',
     'right'
@@ -80,9 +80,11 @@ function shortcut_link_box_callback($post) {
   // // ========
   $link_data = get_post_meta($post->ID, 'page_dropdown', true);
 
-  echo 'The current page this shortcut is linked to is <b> ' . $link_data . '</b>';
-
-  echo $link_data;
+  if ($link_data) {
+    echo 'The current page this shortcut is linked to is <b> ' . $link_data . '</b><br><br>';
+  } else {
+    echo 'This shortcut isn\'t currently linked to a page. Please select below.<br><br>';
+  }
 
   // // Creating Dropdown
   // // ========
@@ -93,22 +95,43 @@ function shortcut_link_box_callback($post) {
     'echo' => true,
     'show_option_none' => 'Select a page',
     'class' => 'page_dropdown',
-    'value_field' => 'post_title',
+    'value_field' => 'post_name',
+    // post_name gets the slug. post_title would get the actual text/title
     'id' => 'page_dropdown',
     'selected' => $link_data
   );
 
-  // this is driving me insane a little bit i will rest it for a brief moment of respite
-
   wp_dropdown_pages($dropdown_args);
-
-  // NOTE this isnt working yet idk how to figure it out yet
-  // https://wordpress.stackexchange.com/questions/57293/how-to-create-a-metabox-that-will-list-all-my-pages-in-a-dropdown-selector
-  // https://wordpress.stackexchange.com/questions/210034/save-the-value-of-a-wp-dropdown-pages
 }
 
 add_action('admin_menu', 'add_shortcut_link_box');
 
+function save_shortcut_link($post_id, $post) {
+
+  $post_type = get_post_type_object($post->post_type);
+  if (! current_user_can($post_type->cap->edit_post, $post_id)) {
+    return $post_id;
+  }
+
+  if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+    return $post_id;
+  }
+
+  if ($post->post_type != 'shortcuts') {
+    return $post_id;
+  }
+
+  if (isset($_POST['page_dropdown'])) {
+    update_post_meta($post_id, 'page_dropdown', sanitize_text_field($_POST['page_dropdown']));
+  } else {
+    delete_post_meta($post_id, 'page_dropdown');
+  }
+
+  return $post_id;
+  // return it as original if no conditions are met
+}
+
+add_action('save_post', 'save_shortcut_link', 10, 2);
 
 // setting up purr stories posttype
 // =========================================
