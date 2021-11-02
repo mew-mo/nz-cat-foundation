@@ -49,7 +49,7 @@ if ( have_posts() ) :
           ?></p>
           <hr>
           <p class="card-text"><?php the_excerpt();?></p>
-          <a href="<?php the_permalink();?>" style="color:white;"><button type="button" class="btn ncf-sub-btn">Read more</button></a>
+          <a href="<?php the_permalink();?>" class="btn ncf-btn ncf-sub-btn btn-hov-effect">Read more</a>
         </div>
       </div>
     </div>

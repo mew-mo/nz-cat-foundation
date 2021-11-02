@@ -39,24 +39,68 @@ a {
   height: 80px;
 }
 
+/* button styles */
+/* ===================== */
 .ncf-btn {
-  background: var(--ncf-ps-blue);
-  font-size: 1.5em;
+  text-align: center;
+  display: inline-block;
+  position: relative;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 1.1rem;
   color: var(--ncf-dark);
-  transition: all .3s ease;
+  background-color: var(--ncf-ps-blue);
+  padding: 10px 0px;
+  width: 150px;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.btn-hov-effect {
+  transition: all 0.2s linear 0s;
+}
+
+.btn-hov-effect:before {
+  content: "\f1b0";
+  font-family: FontAwesome;
+  font-size: 15px;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ncf-dark);
+  right: 0;
+  top: 0;
+  opacity: 0;
+  height: 100%;
+  width: 40px;
+  transition: all 0.2s linear 0s;
+}
+
+.btn-hov-effect:hover {
+  text-indent: -10px;
+}
+
+.btn-hov-effect:hover:before {
+  opacity: 1;
+  text-indent: 0px;
 }
 
 .ncf-btn:hover {
-  background: var(--ncf-blue);
-  font-size: 1.5em;
-  transition: all .3s ease;
+  color: var(--ncf-dark);
+  width: 170px;
 }
+/* main btn hover ENDS */
 
-.ncf-sub-btn {
+/* sub btn hover */
+.ncf-sub-btn,
+a.ncf-sub-btn {
   background: var(--ncf-ps-blue);
   font-size: 1rem;
   color: var(--ncf-dark);
 }
+
+/* subbtn hover ENDS */
 
 a.checkout-button.button.alt.wc-forward {
   background: var(--ncf-pink);
@@ -117,9 +161,8 @@ a {
   --border-radius: 15px;
 }
 
-
-/* nav styles */
-/* ===================== */
+/* header.php */
+/* ====================================================== */
 
 #logo {
   height: 80px;
@@ -138,6 +181,8 @@ a {
 .menu-item-18 .nav-link {
   color: var(--ncf-light);
   background: var(--ncf-pink);
+  border-radius: 20px;
+  padding: 10px 20px !important;
 }
 
 .navbar-collapse {
@@ -332,8 +377,16 @@ textPath {
   margin-left: 70px;
 }
 
-.purr-content a {
+.purr-content a:not(.ncf-btn) {
   color: var(--ncf-pink);
+}
+
+.purr-btn {
+  width: 250px;
+}
+
+.purr-btn:hover {
+  width: 270px;
 }
 
 .purr-line {
@@ -359,7 +412,7 @@ textPath {
 }
 
 .card-title a,
-.card a,
+.date-posted a,
 .back-link {
   color: var(--ncf-pink);
 }
@@ -489,6 +542,11 @@ input#submit.submit {
 footer {
   background: var(--ncf-dark);
   color: var(--ncf-light);
+}
+
+footer h5,
+footer a {
+  text-align: left;
 }
 
 .pagenav {

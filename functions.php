@@ -494,7 +494,7 @@ function theme_color_customize_section($wp_customize) {
 
   $wp_customize->add_control(new WP_Customize_Color_Control(
     $wp_customize, 'bodytxt_colorpicker', array(
-      'label' => 'Body Text Colour',
+      'label' => 'Body Text & Nav Link Colour',
       'section' => 'theme_color_section',
       'settings' => 'bodytxt_colorpicker',
       'priority' => 150
@@ -595,7 +595,8 @@ function theme_colorpicker_css() {
       }  ?>;
     }
 
-    p {
+    p,
+    .menu-item .nav-link {
       color: <?php echo $bodytxt_color ?>;
     }
 
@@ -609,16 +610,13 @@ function theme_colorpicker_css() {
     }
 
     .ncf-btn,
-    .ncf-sub-btn {
+    .ncf-sub-btn,
+    a.ncf-sub-btn,
+    .ncf-btn:hover,
+    .ncf-sub-btn:hover,
+    .btn-hov-effect:before {
       background: <?php echo $subbtn_color ?>;
       color: <?php echo $subbtntxt_color ?>;
-      transition: all .3s ease;
-    }
-
-    .ncf-btn:hover,
-    .ncf-sub-btn:hover {
-      opacity: .5;
-      transition: all .3s ease;
     }
 
   </style>

@@ -23,8 +23,7 @@
             echo get_the_term_list($post->ID, 'news-type', '<div class="news-tag">', ' ', '</div>');
             ?></p>
             <p class="card-text"><?php the_content();?></p>
-            <a href="<?php echo get_page_link(get_page_by_path('news'));?>">
-            <button type="button" class="btn ncf-sub-btn">Back to News</button></a>
+            <a href="<?php echo get_page_link(get_page_by_path('news'));?>" class="btn ncf-btn ncf-sub-btn btn-hov-effect">Back to News</a>
           </div>
           <?php endwhile;
             else : echo '<p> 404: Post Not Found :( </p>';

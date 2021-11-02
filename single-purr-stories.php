@@ -16,8 +16,7 @@
             <h2 style="display:inline;"><?php the_title(); ?></h2>
             <div class="purr-line"></div>
             <p class="card-text"><?php the_content();?></p>
-            <a href="<?php echo get_page_link(get_page_by_path('purr-stories'));?>">
-            <button type="button" class="btn ncf-btn">Back to Purr Stories</button></a>
+            <a href="<?php echo get_page_link(get_page_by_path('purr-stories'));?>" class="btn ncf-btn ncf-sub-btn purr-btn btn-hov-effect">Back to Purr Stories</a>
           </div>
           <?php endwhile;
             else : echo '<p> 404: Post Not Found :( </p>';

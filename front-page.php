@@ -5,8 +5,8 @@
   <div class="caption">
     <h1 class="title"><?php echo get_theme_mod('nzcf_title');?></h1>
     <h2 class="subtitle"><?php echo get_theme_mod('nzcf_tagline');?></h2>
-    <a href="<?php echo get_page_link(get_page_by_path('help-us'));?>" style="color:white;"> <br>
-    <button type="button" class="btn ncf-btn">Help Them</button></a>
+    <br>
+    <a href="<?php echo get_page_link(get_page_by_path('help-us'));?>" class="ncf-btn btn-hov-effect">Help Them</a>
   </div>
 </div>
 <!-- hero ends -->
